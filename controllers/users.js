@@ -7,7 +7,7 @@ const usersFilePath = path.join(__dirname, '..', 'data', 'users.json');
 const getUsers = async (req, res) => {
   try {
     const users = await getJsonFromFile(usersFilePath);
-    res.send(users);
+    res.send(users); // parsing is done in files.js
   } catch (error) {
     console.log('Error in getUsers: ', error);
     res.status(500).send({ message: 'An error has occurred on the server' });

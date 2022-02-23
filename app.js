@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
+const helmet = require('helmet');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 
@@ -10,6 +11,7 @@ app.get('/', (req, res) => {
   res.status(404).send({ message: 'Requested resource not found' });
 });
 
+app.use(helmet());
 app.use('/users', userRouter);
 app.use('/cards', cardRouter);
 
