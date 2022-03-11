@@ -13,7 +13,7 @@ const cardSchema = new mongoose.Schema(
       required: true,
       validate: {
         validator(v) {
-          return /https?:\/\/.*/gi.test(v);
+          return /(https?:\/\/)[a-zA-Z0-9-._~:?%#[\]@!$&'()*+,;=]*(\.com)(\/[a-zA-Z0-9-._~:?%#[\]@!$&'()*+,;=]*)*/gi.test(v);
         },
         message: 'not a valid URL',
       },
@@ -25,6 +25,7 @@ const cardSchema = new mongoose.Schema(
     },
     likes: [{
       type: Array,
+      ref: 'user',
       default: [],
     }],
     createdAt: {
